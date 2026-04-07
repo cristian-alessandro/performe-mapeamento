@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapeamento de Obstáculos — Performe Fit Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050c18;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(249,115,22,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.08) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0px;
+    }
+
+    .logo {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 24px rgba(249,115,22,0.35));
+    }
+
+    .brand-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, #f97316, #3b82f6);
+      border-radius: 2px;
+    }
+
+    .headline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .headline h1 {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .headline h1 span {
+      color: #f97316;
+    }
+
+    .headline p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+      font-weight: 400;
+    }
+
+    .stats {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: #f97316;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .cta-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 20px 32px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow:
+        0 8px 32px rgba(249,115,22,0.4),
+        0 2px 8px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::after {
+      content: ' →';
+      font-size: 20px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 12px 40px rgba(249,115,22,0.55),
+        0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .feature-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .feature-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .feature-text strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 400px) {
+      .headline h1 { font-size: 24px; }
+      .logo { width: 130px; height: 130px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="logo-wrap">
+      <img class="logo" src="logo.jpeg" alt="Performe Fit Club">
+      <span class="brand-name">Performe Fit Club</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="headline">
+      <h1>Você sabe o que fazer.<br><span>Por que não está fazendo?</span></h1>
+      <p>Em 5 minutos, descubra o padrão comportamental que está travando o seu processo — e por que força de vontade sozinha não resolve.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Minutos</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">15</span>
+        <span class="stat-label">Perguntas</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Perfis</span>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">🧠</span>
+        <span class="feature-text"><strong>Diagnóstico comportamental real</strong> — não um quiz genérico. Cada resposta revela o mecanismo que está por trás do seu padrão.</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⚡</span>
+        <span class="feature-text"><strong>Devolutiva personalizada</strong> — após o mapeamento, você recebe a análise do seu perfil diretamente no WhatsApp.</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎯</span>
+        <span class="feature-text"><strong>Baseado em neurociência</strong> — entenda o que o seu cérebro está fazendo e como redirecionar isso a seu favor.</span>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a class="cta-btn" href="https://form.jotform.com/260963662812058" target="_blank">
+        Fazer o Mapeamento
+      </a>
+      <span class="cta-note">Gratuito · 5 minutos · Resposta em até 24h</span>
+    </div>
+
+    <div class="footer">Cristian Alessandro · Especialista em Comportamento Humano</div>
+
+  </div>
+</body>
+  </html>
